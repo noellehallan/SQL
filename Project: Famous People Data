@@ -1,0 +1,85 @@
+CREATE TABLE famous_people (id INTEGER PRIMARY KEY, name TEXT);
+
+INSERT INTO famous_people VALUES (1, "Ryan Reynolds");
+INSERT INTO famous_people VALUES (2, "Blake Lively");
+INSERT INTO famous_people VALUES (3, "Sandra Bullock");
+INSERT INTO famous_people VALUES (4, "Anna Kendrick");
+INSERT INTO famous_people VALUES (5, "Mila Kunis");
+INSERT INTO famous_people VALUES (6, "Ashton Kutcher");
+INSERT INTO famous_people VALUES (7, "Justin Timberlake");
+INSERT INTO famous_people VALUES (8, "Jessica Biel");
+INSERT INTO famous_people VALUES (9, "Natalie Portman");
+INSERT INTO famous_people VALUES (10, "Channing Tatum");
+INSERT INTO famous_people VALUES (11, "Rachel McAdams");
+INSERT INTO famous_people VALUES (12, "Ryan Gosling");
+INSERT INTO famous_people VALUES (13, "Steve Carell");
+INSERT INTO famous_people VALUES (14, "Emma Stone");
+INSERT INTO famous_people VALUES (15, "Andrew Garfield");
+
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY, actors_id INTEGER, movie_title TEXT);
+
+INSERT INTO movies VALUES (1, 1, "The Proposal");
+INSERT INTO movies VALUES (2, 3, "The Proposal");
+INSERT INTO movies VALUES (3, 2, "A Simple Favor");
+INSERT INTO movies VALUES (4, 4, "A Simple Favor");
+INSERT INTO movies VALUES (5, 4, "Trolls");
+INSERT INTO movies VALUES (6, 7, "Trolls");
+INSERT INTO movies VALUES (7, 5, "Black Swan");
+INSERT INTO movies VALUES (8, 9, "Black Swan");
+INSERT INTO movies VALUES (9, 5, "Friends With Benefits");
+INSERT INTO movies VALUES (10, 7, "Friends With Benefits");
+INSERT INTO movies VALUES (11, 6, "No Strings Attachted");
+INSERT INTO movies VALUES (12, 9, "No Strings Attachted");
+INSERT INTO movies VALUES (13, 8, "Valentines Day");
+INSERT INTO movies VALUES (14, 6, "Valentines Day");
+INSERT INTO movies VALUES (15, 10, "The Lost City");
+INSERT INTO movies VALUES (16, 3, "The Lost City");
+INSERT INTO movies VALUES (17, 1, "The Green Lantern");
+INSERT INTO movies VALUES (18, 2, "The Green Lantern");
+INSERT INTO movies VALUES (19, 10, "The Vow");
+INSERT INTO movies VALUES (20, 11, "The Vow");
+INSERT INTO movies VALUES (21, 11, "The Notebook");
+INSERT INTO movies VALUES (22, 12, "The Notebook");
+INSERT INTO movies VALUES (23, 12, "Murder By Numbers");
+INSERT INTO movies VALUES (24, 3, "Murder By Numbers");
+INSERT INTO movies VALUES (25, 12, "Crazy, Stupid, Love");
+INSERT INTO movies VALUES (26, 13, "Crazy, Stupid, Love");
+INSERT INTO movies VALUES (27, 14, "Crazy, Stupid, Love");
+INSERT INTO movies VALUES (28, 14, "The Amazing Spider-Man");
+INSERT INTO movies VALUES (29, 15, "The Amazing Spider-Man");
+
+
+CREATE TABLE married_couples (id INTEGER PRIMARY KEY, actors_id1 INTEGER, actors_id2 INTEGER);
+
+INSERT INTO married_couples VALUES (1, 1, 2 );
+INSERT INTO married_couples VALUES (2, 5, 6);
+INSERT INTO married_couples VALUES (3, 7, 8);
+
+CREATE TABLE birth_place (id INTEGER PRIMARY KEY, actor_id INTEGER, birthplace TEXT);
+
+INSERT INTO birth_place VALUES (1, 1, "Canada");
+INSERT INTO birth_place VALUES (2, 2, "America");
+INSERT INTO birth_place VALUES (3, 3, "America");
+INSERT INTO birth_place VALUES (4, 4, "America");
+INSERT INTO birth_place VALUES (5, 5, "America");
+INSERT INTO birth_place VALUES (6, 6, "America");
+INSERT INTO birth_place VALUES (7, 7, "America");
+INSERT INTO birth_place VALUES (8, 8, "America");
+INSERT INTO birth_place VALUES (9, 9, "America");
+INSERT INTO birth_place VALUES (10, 10, "America");
+INSERT INTO birth_place VALUES (11, 11, "Canada");
+INSERT INTO birth_place VALUES (12, 12, "Canada");
+INSERT INTO birth_place VALUES (13, 13, "America");
+INSERT INTO birth_place VALUES (14, 14, "America");
+INSERT INTO birth_place VALUES (15, 15, "America");
+
+/* Which actors/actresses starred in the same movies?*/
+SELECT name, movie_title FROM famous_people JOIN movies ON famous_people.id=movies.actors_id;
+
+/* What country is each actor/actress from?*/
+SELECT name, birthplace FROM famous_people JOIN birth_place ON famous_people.id=birth_place.actor_id ORDER BY birthplace;
+
+/* Which actors/actresses are married? */
+SELECT a.name, b.name FROM married_couples JOIN famous_people a ON a.id = married_couples.actors_id1 JOIN famous_people b ON b.id = married_couples.actors_id2;
+
