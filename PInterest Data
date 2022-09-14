@@ -1,0 +1,41 @@
+CREATE TABLE pinterest (id INTEGER PRIMARY KEY, post_title TEXT);
+
+INSERT INTO pinterest VALUES (1, "DIY hairbows");
+INSERT INTO pinterest VALUES (2, "boho baby girl nursery");
+INSERT INTO pinterest VALUES (3, "first birthday daisy cake");
+INSERT INTO pinterest VALUES (4, "medium length haircuts");
+INSERT INTO pinterest VALUES (5, "must have baby items");
+INSERT INTO pinterest VALUES (6, "easy crockpot meals");
+
+SELECT * FROM pinterest;
+
+ALTER TABLE pinterest ADD views INTEGER;
+
+UPDATE pinterest SET views = "85" WHERE id = 1;
+UPDATE pinterest SET views = "118" WHERE id = 2;
+UPDATE pinterest SET views = "72" WHERE id = 3;
+UPDATE pinterest SET views = "143" WHERE id = 4;
+UPDATE pinterest SET views = "305" WHERE id = 5;
+UPDATE pinterest SET views = "386" WHERE id = 6;
+
+SELECT * FROM pinterest;
+
+ALTER TABLE pinterest ADD saves INTEGER;
+
+UPDATE pinterest SET saves = "35" WHERE id = 1;
+UPDATE pinterest SET saves = "57" WHERE id = 2;
+UPDATE pinterest SET saves = "45" WHERE id = 3;
+UPDATE pinterest SET saves = "92" WHERE id = 4;
+UPDATE pinterest SET saves = "267" WHERE id = 5;
+UPDATE pinterest SET saves = "305" WHERE id = 6;
+
+SELECT * FROM pinterest;
+
+INSERT INTO pinterest (id, post_title, views, saves) VALUES (7, "DIY tie-dye shirt", 260, 185);
+INSERT INTO pinterest (id, post_title, views, saves) VALUES (8, "Master bedroom navy and gold mood board", 128, 55);
+
+SELECT * FROM pinterest;
+
+DELETE FROM pinterest WHERE id = 7;
+
+SELECT * FROM pinterest;
