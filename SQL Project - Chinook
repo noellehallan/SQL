@@ -1,0 +1,53 @@
+* #1 List the titles for all employees. */
+
+SELECT Title FROM chinook.employees;
+
+
+
+/* Who all has a "manager" title and what is the title? */
+
+SELECT FirstName, LastName, Title From chinook.employees WHERE Title LIKE '%Manager%';
+
+
+
+/* View all customers in the USA*/
+
+SELECT * FROM chinook.customers WHERE Country = 'USA';
+
+
+
+/* View all invoices from the USA*/
+
+SELECT * FROM chinook.invoices WHERE BillingCountry = 'USA';
+
+
+
+/* Which customer had the most expensive sinlge invoice? */
+
+SELECT CustomerId, MAX(total) FROM chinook.invoices;
+
+
+
+/* Customer who spent the most money with their total*/
+
+SELECT CustomerId, COUNT(Total) FROM chinook.invoices;
+
+
+
+/* Customer who spent the most in the USA with their total */
+
+SELECT CustomerId, COUNT(Total) FROM chinook.invoices WHERE BillingCountry = 'USA';
+
+
+/* How many Invoices were there in 2009? */
+
+SELECT COUNT(*) FROM chinook.Invoices WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+
+/* What are the total sales for 2009? */
+
+SELECT SUM(Total)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+
+
